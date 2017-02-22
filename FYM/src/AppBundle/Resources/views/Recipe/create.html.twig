@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+        <ul>
+            <li>
+                <label>Igredient :
+                    <select name="igredients[]">
+                        {% for e in igredients %}
+                            <option value="{{ e.id }}"> {{ e.name }}</option>
+                        {%  endfor %}
+                    </select>
+                </label>
+                <label> Quantity :
+                        <input type="number" name="quantity[]"> grams
+                </label>
+            </li>
+            <li>
+                <label>Igredient :
+                    <select name="igredients[]">
+                        {% for e in igredients %}
+                            <option value="{{ e.id }}"> {{ e.name }}</option>
+                        {%  endfor %}
+                    </select>
+                </label>
+                <label> Quantity :
+                    <input type="number" name="quantity[]"> grams
+                </label>
+            </li>
+            <li>
+                <label>Igredient :
+                    <select name="igredients[]">
+                        {% for e in igredients %}
+                            <option value="{{ e.id }}"> {{ e.name }}</option>
+                        {%  endfor %}
+                    </select>
+                </label>
+                <label> Quantity :
+                    <input type="number" name="quantity[]" > grams
+                </label>
+            </li>
+        </ul>
+            <span id="addAndRmv">
+                <button class="addIgredient">Add igredient</button>
+                <button class="rmvIgredient">Remove igredient</button>
+            </span>
+                <br><br>
+                <input type="submit" value="Add recipe">
+
+    {{ form_end(form) }}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/assets/js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> {{ recipe.name }}</h1>
+    <ul>
+        {% for e in recipe.igredientQuantity %}
+            <li> {{ e }}</li>
+        {% endfor %}
+    </ul>
+    <span> {{ recipe.description }}</span>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
