@@ -34,7 +34,7 @@ class Quantity
     private $igredient;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Recipe", inversedBy="igredientQuantity")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Recipe", inversedBy="igredientQuantity", cascade={"all"})
      */
     private $recipe;
     /**

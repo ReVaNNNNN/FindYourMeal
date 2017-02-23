@@ -2,12 +2,20 @@
 
 {% block body %}
     <h1> {{ recipe.name }}</h1>
+    <br>
     <ul>
         {% for e in recipe.igredientQuantity %}
             <li> {{ e.igredient.name }}</li>
         {% endfor %}
     </ul>
     <span> {{ recipe.description }}</span>
+    <br><br>
+    <a href="/"><button> Back </button></a>
+    <br><br>
+    <a href="/{{ recipe.id }}/edit" style="color:greenyellow"><button> Edit </button></a>
+    <a href="/{{ recipe.id }}/delete" style="color:darkred"><button > Delete </button></a>
+
+
 {% endblock %}
 
 {% block javascripts %}

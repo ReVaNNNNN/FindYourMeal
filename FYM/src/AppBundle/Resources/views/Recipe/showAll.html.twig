@@ -4,6 +4,7 @@
     {% for recipe in recipes %}
         <h1><a href="/{{ recipe.id }}">{{ recipe.name }} </a></h1>
     {% endfor %}
+    <a href="/create" style="color:greenyellow"><button> Add new recipe </button></a>
 {% endblock %}
 
 {% block javascripts %}

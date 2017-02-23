@@ -31,6 +31,7 @@ class RecipeController extends Controller
         return ['form' => $form->createView(), 'igredients' => $igredients];
     }
 
+
     // method for: get form and save inserted data in database
     /**
      * @Route("/create")
@@ -84,6 +85,66 @@ class RecipeController extends Controller
         return ['form' => $form->createView()];
     }
 
+    // edit recipe with get id
+    /**
+     * @Route("/{id}/edit")
+     * @Template("AppBundle:Recipe:create.html.twig")
+     */
+    public function editAction(Request $request, $id)
+    {
+        // find in database recipe with get id and all igredients
+        $recipe = $this->getDoctrine()->getRepository('AppBundle:Recipe')->find($id);
+        $igredients = $this->getDoctrine()->getRepository('AppBundle:Igredient')->findAll();
+
+
+        // if recipe doesn't exist throw exception
+        if(!$recipe) {
+            return $this->createNotFoundException('Recipe not found');
+        }
+
+        // create form and enter data to that form
+        $form = $this->createForm(new RecipeType(), $recipe);
+        $form->handleRequest($request);
+
+        // ADD VALIDATION TO FORM AND CHECK VALIDATION
+        // if form is submitted
+        if($form->isSubmitted()) {
+
+            // update record in db
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            // redirect user to show updated recipe
+            return $this->redirectToRoute('app_recipe_show', [
+                'id' => $recipe->getId()
+            ]);
+        }
+
+        return ['form' => $form->createView(), 'igredients' => $igredients];
+    }
+
+    // delete recipe with get id
+    /**
+     * @Route("/{id}/delete")
+     */
+    public function deleteAction($id)
+    {
+        // find in database recipe with get id
+        $recipe = $this->getDoctrine()->getRepository('AppBundle:Recipe')->find($id);
+
+        // if recipe doesn't exist throw exception
+        if(!$recipe) {
+            return $this->createNotFoundException('Recipe not found');
+        }
+
+        // remove recipe from database with reference quantity
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($recipe);
+        $em->flush();
+
+        return $this->redirectToRoute('app_recipe_showall');
+    }
+
     // method for show one recipe with get id
     /**
      * @Route("/{id}")
@@ -117,16 +178,4 @@ class RecipeController extends Controller
         // show all recipes as links(it is set in Twig)
         return ['recipes' => $recipes];
     }
-
-    // edit recipe with get id
-    /**
-     * @@Route("/{id}/edit")
-     * @Template("AppBundle:Recipe:create.html.twig")
-     */
-    public function editAction($id)
-    {
-        // find in database recipe with get id
-        $recipe = $this->getDoctrine()->getRepository('AppBundle:Recipe')->find($id);
-    }
-
 }

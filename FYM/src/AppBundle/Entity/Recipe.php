@@ -37,7 +37,7 @@ class Recipe
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Quantity", mappedBy="recipe")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Quantity", mappedBy="recipe", cascade={"all"})
      */
     private $igredientQuantity;
 
