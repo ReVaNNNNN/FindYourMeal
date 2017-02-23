@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for recipe in recipes %}
+        <h1><a href="/{{ recipe.id }}">{{ recipe.name }} </a></h1>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+

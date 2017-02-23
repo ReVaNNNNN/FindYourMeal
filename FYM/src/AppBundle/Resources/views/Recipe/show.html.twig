@@ -4,7 +4,7 @@
     <h1> {{ recipe.name }}</h1>
     <ul>
         {% for e in recipe.igredientQuantity %}
-            <li> {{ e }}</li>
+            <li> {{ e.igredient.name }}</li>
         {% endfor %}
     </ul>
     <span> {{ recipe.description }}</span>
