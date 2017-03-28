@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/assets/style/style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div id="container">
+        <header>
+            <div id="search-div">
+                <h1> Add some ingredients: </h1>
+                <form action="#" method="POST">
+                    <input id="search-input" type="text" name="find[]" data-provide="typeahead" value="">
+
+                    {#{% for  %}#}
+                    {#{% if igr is defined %}#}
+                        {#{% for i in igr %}#}
+                            {#{% if i.id == key %}#}
+                    {% for i in igredients %}
+
+                        <input type="hidden" name="find[]" value="{{ i }}">
+                    {% endfor %}
+
+                            {#{% endif %}#}
+                        {#{% endfor %}#}
+{#{% endif %}#}
+                    {#{% endfor %}#}
+                    <a href="/start"><input type="submit" value="Add ingredient"></a>
+                </form>
+            </div>
+            <div id="sign-in">
+                <a href="/"><input type="submit" value="Sign in"></a>
+            </div>
+        </header>
+        <div id="leftside">
+            <ul>
+                {% for i in igredients %}
+
+                        <li> {{ i  }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="middle">
+            <p> HELLO </p>
+        </div>
+
+        <div id="rightside">
+            <p> HELLO </p>
+        </div>
+        <footer>
+
+        </footer>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () {
+            $('#search-input').typeahead(
+                {
+                    source: [
+                        {value: "someId1", name: "Display name 1"},
+                        {value: "someId2", name: "Display name 2"},
+                        {value: "1", name: "Marchewka"},
+                        {value: "3", name: "Ogórek zielony"},
+                        {value: "5", name: "Jabłko"}
+                    ],
+                    // zmieniłem z true
+                    autoSelect: true
+                }
+            );
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,72 @@
+body
+{
+    background-color: #5eb5e0;
+}
+.typeahead
+{
+    z-index: 1051;
+}
+#container
+{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+header
+{
+    width: 1200px;
+    text-align: center;
+}
+#search-div
+{
+    width: 900px;
+    display: inline-block;
+}
+#search-div > h1
+{
+    color: rebeccapurple;
+    margin-left: 290px;
+}
+#search-input
+{
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 290px;
+}
+#sign-in
+{
+    width: 295px;
+    display: inline-block;
+}
+#sign-in > a
+{
+    float: right;
+}
+#leftside
+{
+    display: inline-block;
+    width: 300px;
+    margin-right: 0;
+    text-align: center;
+    border: 1px dashed red;
+}
+#middle
+{
+    display: inline-block;
+    width: 580px;
+    margin-left: 0;
+    text-align: center;
+    border: 1px dashed red;
+    margin-top: 60px;
+
+
+}
+#rightside
+{
+    display: inline-block;
+    width: 300px;
+    margin: 0;
+    text-align: center;
+    border: 1px dashed red;
+}
+

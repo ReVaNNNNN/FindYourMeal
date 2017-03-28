@@ -85,14 +85,14 @@ class RecipeController extends Controller
         return ['form' => $form->createView()];
     }
 
-    // edit recipe with get id
+    // edit recipe with get ID
     /**
      * @Route("/{id}/edit")
      * @Template("AppBundle:Recipe:create.html.twig")
      */
     public function editAction(Request $request, $id)
     {
-        // find in database recipe with get id and all igredients
+        // find in database recipe with get ID and all igredients
         $recipe = $this->getDoctrine()->getRepository('AppBundle:Recipe')->find($id);
         $igredients = $this->getDoctrine()->getRepository('AppBundle:Igredient')->findAll();
 
@@ -123,13 +123,13 @@ class RecipeController extends Controller
         return ['form' => $form->createView(), 'igredients' => $igredients];
     }
 
-    // delete recipe with get id
+    // delete recipe with get ID
     /**
      * @Route("/{id}/delete")
      */
     public function deleteAction($id)
     {
-        // find in database recipe with get id
+        // find in database recipe with get ID
         $recipe = $this->getDoctrine()->getRepository('AppBundle:Recipe')->find($id);
 
         // if recipe doesn't exist throw exception

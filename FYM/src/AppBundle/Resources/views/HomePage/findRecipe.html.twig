@@ -1,0 +1,50 @@
+{% extends 'welcome.html.twig.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/assets/style/style.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div id="container">
+        <header>
+            <div id="search-div">
+                <h1> Add some ingredients: </h1>
+                <form action="{{ path('start') }}" method="GET">
+                    <input id="search-input" type="text" name="find[]" data-provide="typeahead">
+
+                    {#{% for  %}#}
+                    <input type="hidden" name="find[]" value="asd">
+
+                    {#{% endfor %}#}
+                    <input type="submit" value="Add ingredient">
+                </form>
+            </div>
+            <div id="sign-in">
+                <a href="/"><input type="submit" value="Sign in"></a>
+            </div>
+        </header>
+        <div id="leftside">
+            <ul>
+                {% for i in igr %}
+                    <li> {{ i.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="middle">
+            <p> HELLO </p>
+        </div>
+
+        <div id="rightside">
+            <p> HELLO </p>
+        </div>
+        <footer>
+
+        </footer>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
