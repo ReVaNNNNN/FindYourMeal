@@ -40,16 +40,12 @@ class RecipeController extends Controller
      */
     public function saveInDatabaseAction(Request $request)
     {
-        // create new object Recipe
         $recipe = new Recipe();
 
-        // create form and get data from that form
         $form = $this->createForm(new RecipeType(), $recipe);
         $form->handleRequest($request);
 
-        // ADD VALIDATION TO FORM AND CHECK VALIDATION
-
-        // if form was submitted
+        
         if($form->isSubmitted()) {
 
             // create new object doctrine -> manager
@@ -60,7 +56,6 @@ class RecipeController extends Controller
             foreach ($request->get('igredients') as $igredient) {
                 $quantity = new Quantity();
 
-                // find in database object equal id from igredients array[]
                 $igredient = $this->getDoctrine()->getRepository('AppBundle:Igredient')->find($igredient);
 
                 // set all attributes
